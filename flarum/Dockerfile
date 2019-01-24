@@ -1,0 +1,25 @@
+FROM debian
+
+EXPOSE 8888
+ENV DB_SERVER=mariadb
+ENV DB_NAME=flarum
+ENV DB_USER=flarum
+ENV DB_PASSWORD=flarum1234
+
+RUN apt update \
+ && apt install apt-transport-https lsb-release ca-certificates wget -y \
+ && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+ && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
+ && apt update \
+ && apt install composer php7.2 nginx -y \
+ && apt install php7.2-dom php7.2-gd php7.2-json php7.2-mbstring php7.2-mysql php7.2-tokenizer php7.2-fpm -y \
+ && mkdir /run/php \
+ && cd / \
+ && wget https://github.com/just-containers/s6-overlay/releases/download/v1.21.7.0/s6-overlay-amd64.tar.gz \
+ && tar -zxvf s6-overlay-amd64.tar.gz \
+ && mkdir fr \
+ && cd fr \
+ && composer create-project flarum/flarum . --stability=beta \
+ 
+ADD root /
+ENTRYPOINT [ "/init" ]
