@@ -20,4 +20,4 @@ RUN apt update \
 
 ADD root /
 RUN chmod 0700 /etc/monitrc
-CMD [ "monit -I" ]
+CMD [ "/usr/bin/monit -I" ]
