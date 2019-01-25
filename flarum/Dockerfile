@@ -19,4 +19,4 @@ RUN apt update \
  RUN chown www-data.www-data /fr && chown www-data.www-data /fr/storage && chown www-data.www-data /fr/public/assets
 
 ADD root /
-ENTRYPOINT [ "/init" ]
+ENTRYPOINT [ "monit" ]
