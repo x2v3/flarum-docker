@@ -1,7 +1,7 @@
 check process nginx with pidfile /run/nginx.pid
-    start program = "nginx"
-    stop program = "nginx -s stop"
+    start program = "/usr/sbin/nginx"
+    stop program = "/usr/sbin/nginx -s stop"
 
 check process phpfpm with pidfile /run/php/php7.2-fpm.pid
-    start program = "php-fpm7.2"
+    start program = "/usr/sbin/php-fpm7.2"
     stop program = "kill `cat /run/php/php7.2-fpm.pid`"
