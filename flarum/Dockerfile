@@ -19,7 +19,7 @@ RUN apt update \
  && tar -zxvf s6-overlay-amd64.tar.gz \
  && mkdir /fr 
  RUN composer create-project flarum/flarum /fr --stability=beta
- RUN chmod -R 775 /fr
+ RUN chown www-data.www-data /fr && chown www-data.www-data /fr/storage && chown www-data.www-data /fr/public/assets
 
 ADD root /
 ENTRYPOINT [ "/init" ]
