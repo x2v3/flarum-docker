@@ -19,5 +19,5 @@ RUN apt update \
  RUN chown www-data.www-data /fr && chown www-data.www-data /fr/storage && chown www-data.www-data /fr/public/assets
 
 ADD root /
-RUN chmod 0700 /etc/monitrc
+RUN chmod 0700 /etc/monitrc && chmod +x /bin/run.sh
 CMD [ "/bin/run.sh" ]
