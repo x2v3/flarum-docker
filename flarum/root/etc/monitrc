@@ -4,4 +4,4 @@ check process nginx with pidfile /run/nginx.pid
 
 check process phpfpm with pidfile /run/php/php7.2-fpm.pid
     start program = "/usr/sbin/php-fpm7.2"
-    stop program = "kill `cat /run/php/php7.2-fpm.pid`"
+    stop program = "/bin/kill `cat /run/php/php7.2-fpm.pid`"
