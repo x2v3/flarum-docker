@@ -17,8 +17,9 @@ RUN apt update \
  && cd / \
  && wget https://github.com/just-containers/s6-overlay/releases/download/v1.21.7.0/s6-overlay-amd64.tar.gz \
  && tar -zxvf s6-overlay-amd64.tar.gz \
- && mkdir /fr \
- && composer create-project flarum/flarum /fr --stability=beta \
+ && mkdir /fr 
+ RUN composer create-project flarum/flarum /fr --stability=beta
+ RUN chmod -R 775 /fr
 
 ADD root /
 ENTRYPOINT [ "/init" ]
