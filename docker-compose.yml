@@ -4,7 +4,9 @@ services:
   flarum:
     image: flarum
     container_name: flarum
-    
+    build:
+      context: ./flarum
+      dockerfile: Dockerfile
     #volumes:
     #  - /mnt/docker/flarum/assets:/flarum/app/public/assets
     #  - /mnt/docker/flarum/extensions:/flarum/app/extensions
