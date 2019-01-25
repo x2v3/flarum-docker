@@ -16,7 +16,8 @@ RUN apt update \
  && mkdir /run/php \
  && mkdir /fr 
  RUN composer create-project flarum/flarum /fr --stability=beta
- RUN chown www-data.www-data /fr && chown www-data.www-data /fr/storage && chown www-data.www-data /fr/public/assets
+ RUN cd /fr && composer require csineneo/lang-simplified-chinese
+ RUN chown www-data.www-data /fr -R
 
 ADD root /
 RUN chmod 0700 /etc/monitrc && chmod +x /bin/run.sh
