@@ -1,7 +1,11 @@
-check process nginx with pidfile /run/nginx.pid every 2 cycles
+set daemon 120
+
+check process nginx with pidfile /run/nginx.pid 
+    every 2 cycles
     start program = "/usr/sbin/nginx"
     stop program = "/usr/sbin/nginx -s stop"
 
-check process phpfpm with pidfile /run/php/php7.2-fpm.pid every 2 cycles
+check process phpfpm with pidfile /run/php/php7.2-fpm.pid 
+    every 2 cycles
     start program = "/usr/sbin/php-fpm7.2"
     stop program = "/bin/kill `cat /run/php/php7.2-fpm.pid`"
