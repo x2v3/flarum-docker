@@ -9,10 +9,10 @@ services:
     build:
       context: ./flarum
       dockerfile: Dockerfile
-    #volumes:
-    #  - /mnt/docker/flarum/assets:/flarum/app/public/assets
-    #  - /mnt/docker/flarum/extensions:/flarum/app/extensions
-    #  - /mnt/docker/flarum/nginx:/etc/nginx/conf.d
+    volumes:
+      - /data/site/flarum/site/public/assets:/flarum/app/public/assets
+    #  - /data/site/flarum/site/extensions:/flarum/app/extensions
+    #  - /data/site/flarum/site/nginx:/etc/nginx/conf.d
     depends_on:
       - mariadb
 
@@ -25,4 +25,4 @@ services:
       - MYSQL_USER=flarum
       - MYSQL_PASSWORD=abcd1234
     volumes:
-      - /mnt/docker/mysql/db:/var/lib/mysql
+      - /data/site/flarum/db:/var/lib/mysql
