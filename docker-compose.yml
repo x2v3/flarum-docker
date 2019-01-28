@@ -5,7 +5,7 @@ services:
     image: flarum
     container_name: flarum
     ports:
-      - 9999:8888
+      - 7125:8888
     build:
       context: ./flarum
       dockerfile: Dockerfile
